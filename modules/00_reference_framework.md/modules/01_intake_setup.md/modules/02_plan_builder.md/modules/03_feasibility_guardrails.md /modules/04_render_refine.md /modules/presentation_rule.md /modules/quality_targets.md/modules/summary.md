@@ -26,6 +26,10 @@ for each day:
     pick Midday activity (close by)  
     pick Afternoon activity (different theme)  
     pick Evening restaurant or optional event
+
+---
+   > Change Log (2025-11-19): 
+   > – Updated weather swap to include an indoor backup in rainy seasons.
   ### **Module 3 — Feasibility & Guardrails**
 
 Apply these **if/else** checks to make sure plans are realistic and adapt to edge cases:
@@ -45,6 +49,7 @@ Apply these **if/else** checks to make sure plans are realistic and adapt to edg
 4. **Weather Swap**
    
    - If rain or cold season likely → make sure at least one indoor activity replaces outdoor ones.
+   - Include at least one indoor backup per day in rainy seasons.
 
 5. **Time Overrun**
    
