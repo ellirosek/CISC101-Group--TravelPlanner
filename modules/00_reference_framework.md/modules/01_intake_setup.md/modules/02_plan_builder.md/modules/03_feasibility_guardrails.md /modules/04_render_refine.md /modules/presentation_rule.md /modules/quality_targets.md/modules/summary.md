@@ -31,40 +31,55 @@ for each day:
    > Change Log (2025-11-19): 
    > – Updated weather swap to include an indoor backup in rainy seasons.
   ### **Module 3 — Feasibility & Guardrails**
+  > Changelog (2025-11-26):
+  > -Applied selected AI critique improvements (clarified conditions, fixed formatting, added handling for invalid/missing inputs).
 
-Apply these **if/else** checks to make sure plans are realistic and adapt to edge cases:
+Apply these **if/else** checks to ensure plans remain realistic, readable, and consistent across days. All adjustments must preserve the structure of the existing itinerary, only modifying the specific activity slot that violates feasibility:
 
-1. **Closed Venue**
-   
-   - If a museum or park is closed on that day → suggest a similar indoor option nearby.
+**1. Daily Labels & Local Time Context**
 
-2. **Over-Budget Meal**
-   
-   - If meal cost > user’s budget → switch to a cheaper restaurant of similar cuisine.
+Every feasibility correction must keep the existing Day 1 / Day 2 / Day 3 labels.
 
-3. **Too Far or Long Travel**
-   
-   - If transfer between activities > 25 min or > 5 km → pick a closer alternative or add a short transit hop.
+When suggesting swaps, always reference the approximate local time of the original slot (e.g., “Replace the 3:00 PM museum visit with…”).
 
-4. **Weather Swap**
-   
-   - If rain or cold season likely → make sure at least one indoor activity replaces outdoor ones.
-   - Include at least one indoor backup per day in rainy seasons.
+**2. Closed Venue**
 
-5. **Time Overrun**
-   
-   - If total planned time > available hours → shorten lunch or pick a nearer stop.
+If a venue is closed at that specific time --> replace it with a similar indoor or same-theme activity in the same time slot.
 
-6. **Mobility Needs**
-   
-   - If mobility limits noted → choose step-free, short-walk options and include breaks.
+**3. Over-Budget Meals**
 
-7. **Dietary Needs**
-   
-   - If user is vegan or has dietary constraints → ensure all meals match or swap with compliant ones.
-8.  **Bookings**
-   
-   - If activity usually needs a ticket → just remind the user to book it; never simulate bookings.
+If a meal exceeds budget --> choose a cheaper option of the same cuisine
+without changing the slot’s time or the meal category.
+
+**4. Negative or Unrealistic Budget**
+
+If user budget ≤ 0 or clearly unrealistic --> switch to free/low-cost activities and note this constraint briefly.
+
+**5. Excessive Travel Time**
+
+If transit > 25 min or > 5 km --> recommend a closer alternative in the same slot or insert a short transit note.
+
+**6. Weather Swap**
+
+If rain/cold likely --> replace outdoor activities with indoor ones.
+
+Maintain one indoor backup per day during rainy seasons.
+
+**7. Time Overrun**
+
+If planned activities exceed available hours --> shorten lunch or choose a nearer stop, but preserve the day structure.
+
+**8. Mobility Needs**
+
+Substitute with step-free, short-walk options and maintain rest breaks.
+
+**9. Dietary Constraints**
+
+Ensure all meals match dietary rules; swap non-compliant items while keeping the same slot and cuisine type.
+
+**10. Bookings**
+
+If the activity requires reservations --> remind the user to book; never simulate the booking.
 
 ---  
 
